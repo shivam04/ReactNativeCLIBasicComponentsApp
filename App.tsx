@@ -18,7 +18,7 @@ function App() {
         <Image
           source={require('./assets/images/cake.png')}
           style={{ width: '100%', height: '100%', backgroundColor: 'red' }}
-          resizeMode={'repeat'}
+          resizeMode={'center'}
         />
         <Image
           source={{
