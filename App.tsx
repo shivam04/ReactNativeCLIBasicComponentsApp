@@ -4,6 +4,7 @@
  *
  * @format
  */
+import { useState } from 'react';
 import { Image } from 'react-native';
 import {
   SafeAreaProvider,
@@ -12,13 +13,19 @@ import {
 
 function App() {
 
+  const [imageSource, setImageSource] = useState({ uri: "http://exmaple.com" })
+
   return (
     <SafeAreaProvider>
       <SafeAreaView>
         <Image
-          source={require('./assets/images/cake.png')}
+          source={imageSource}
           style={{ width: '100%', height: '100%', backgroundColor: 'red' }}
           resizeMode={'center'}
+          onError={() => {
+            console.log("Error has been detected while loading the image")
+            setImageSource(require('./assets/images/cake.png'))
+          }}
         />
         <Image
           source={{
