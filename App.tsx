@@ -5,11 +5,15 @@
  * @format
  */
 import { useState } from 'react';
-import { Pressable, ScrollView, Switch, Text, TextInput, View } from 'react-native';
+import { ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import {
   SafeAreaProvider,
   SafeAreaView,
 } from 'react-native-safe-area-context';
+
+//Fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -63,7 +67,7 @@ function App() {
             <Text>Keep me logged in</Text>
           </View>
 
-          <Pressable
+          <TouchableOpacity
             style={[
               { backgroundColor: 'black' },
               (email.length === 0 || password.length < 8) && { opacity: 0.5 }
@@ -75,10 +79,23 @@ function App() {
               console.log(email, password);
             }}
           >
-            <Text style={{ color: 'white', textAlign: 'center', padding: 10 }}>
-              Submit
-            </Text>
-          </Pressable>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Text style={{ color: 'white', textAlign: 'center', padding: 10 }}>
+                Submit
+              </Text>
+              <FontAwesomeIcon
+                icon={faCheck}
+                color={'white'}
+              />
+            </View>
+          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
