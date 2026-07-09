@@ -4,101 +4,23 @@
  *
  * @format
  */
-import { useState } from 'react';
-import { ScrollView, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  SafeAreaView,
-} from 'react-native-safe-area-context';
 
-//Fontawesome imports
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { View } from 'react-native';
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [shouldKeepLoggedIn, setShouldKeepLoggedIn] = useState(true);
+
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        <ScrollView>
-          <TextInput
-            // Set the value of the TextInput to the email state variable
-            value={email}
-            // Set keyboardType to 'email-address' to display the email keyboard layout
-            keyboardType={'email-address'}
-            // Set the style of the TextInput to have a border, padding, and rounded corners
-            style={{ borderWidth: 1, borderRadius: 4, padding: 10 }}
-            // Set the placeholder text to prompt the user to enter their email
-            placeholder={'Please enter your email here'}
-            // Set the onChangeText function to update the email state variable with the new value typed by the user
-            onChangeText={value => {
-              setEmail(value);
-            }}
-          />
-          <TextInput
-            // Set the value of the TextInput to the password state variable
-            value={password}
-            // Set secureTextEntry to true to hide the typed text as bullets (for passwords)
-            secureTextEntry={true}
-            // Set the style of the TextInput to have a border, padding, and rounded corners
-            style={{ borderWidth: 1, borderRadius: 4, padding: 10 }}
-            // Set the placeholder text to prompt the user to enter their password
-            placeholder={'Please enter your password here'}
-            // Set the onChangeText function to update the password state variable with the new value typed by the user
-            onChangeText={value => {
-              setPassword(value);
-            }}
-          />
-          {/* -- Background Color does not work with button component, therefore we're going to use Pressable
-            <Button
-              title={'Submit'}
-              color={'red'}
-              style={{backgroundColor: 'black'}}
-            />
-        */}
-          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-            {/*-- Switch component to decide whether user wants to stay logged in or not --*/}
-            <Switch
-              value={shouldKeepLoggedIn}
-              onValueChange={value => setShouldKeepLoggedIn(value)}
-            />
-            <Text>Keep me logged in</Text>
-          </View>
+    <View style={{
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      alignItems: 'baseline'
+    }}>
+      <View style={{ backgroundColor: 'yellow', width: 50, height: 200 }} />
+      <View style={{ backgroundColor: 'green', width: 50, height: 200 }} />
+      <View style={{ backgroundColor: 'black', width: 50, height: 200 }} />
+    </View>
 
-          <TouchableOpacity
-            style={[
-              { backgroundColor: 'black' },
-              (email.length === 0 || password.length < 8) && { opacity: 0.5 }
-            ]}
-
-            disabled={email.length === 0 || password.length < 8}
-            onPress={() => {
-              console.log("clicked");
-              console.log(email, password);
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Text style={{ color: 'white', textAlign: 'center', padding: 10 }}>
-                Submit
-              </Text>
-              <FontAwesomeIcon
-                icon={faCheck}
-                color={'white'}
-              />
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
   );
 }
 
