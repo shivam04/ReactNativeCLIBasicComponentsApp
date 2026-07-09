@@ -54,10 +54,12 @@ function App() {
           value={passwordValue}
           // Set the onChangeText function to update the passwordValue state variable with the new value typed by the user
           onChangeText={value => setPasswordValue(value)}
-          // Set keyboardType to 'phone-pad' to display the phone number keyboard layout
-          keyboardType={'phone-pad'}
           // Set secureTextEntry to true to hide the typed text as bullets (for passwords)
           secureTextEntry={true}
+          // Set textContentType to 'password' for iOS and use secureTextEntry for password masking
+          // Note: secureTextEntry may not work with keyboardType='phone-pad' on Android
+          // Removing keyboardType to fix Android issue with secureTextEntry
+          keyboardType={'default'}
           // Set autoFocus to true to automatically focus on this input when the component is rendered
           autoFocus={true}
           // Set the placeholder text to prompt the user to enter their password
