@@ -17,8 +17,8 @@ function App() {
       <SafeAreaView>
         <Image
           source={require('./assets/images/cake.png')}
-          style={{ width: 100, height: 100, backgroundColor: 'red' }}
-          resizeMode={'contain'}
+          style={{ width: 200, height: 100, backgroundColor: 'red' }}
+          resizeMode={'stretch'}
         />
         <Image
           source={{
