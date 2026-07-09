@@ -5,7 +5,7 @@
  * @format
  */
 import { useState } from 'react';
-import { Button, Pressable, ScrollView, Text, TextInput } from 'react-native';
+import { Pressable, ScrollView, Switch, Text, TextInput, View } from 'react-native';
 import {
   SafeAreaProvider,
   SafeAreaView,
@@ -14,6 +14,7 @@ import {
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [shouldKeepLoggedIn, setShouldKeepLoggedIn] = useState(true);
   return (
     <SafeAreaProvider>
       <SafeAreaView>
@@ -53,6 +54,14 @@ function App() {
               style={{backgroundColor: 'black'}}
             />
         */}
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            {/*-- Switch component to decide whether user wants to stay logged in or not --*/}
+            <Switch
+              value={shouldKeepLoggedIn}
+              onValueChange={value => setShouldKeepLoggedIn(value)}
+            />
+            <Text>Keep me logged in</Text>
+          </View>
 
           <Pressable
             style={[
